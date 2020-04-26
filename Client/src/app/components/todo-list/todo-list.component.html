@@ -1,0 +1,47 @@
+<div style="text-align:center" >
+  <a href="https://www.vorto.ai/" target="_blank">
+  <img  width="100" alt="Angular Logo"  src= "../../../assets/vorto.png" >
+  </a>
+</div>
+<!--<img src="https://global-uploads.webflow.com/5e8011cbdad44df4a729d050/5e8286bb5ce9c33a73dd81a2_vorto-logo-dark-bg%402x.png" height="36" srcset="https://global-uploads.webflow.com/5e8011cbdad44df4a729d050/5e8286bb5ce9c33a73dd81a2_vorto-logo-dark-bg%402x-p-500.png 500w, https://global-uploads.webflow.com/5e8011cbdad44df4a729d050/5e8286bb5ce9c33a73dd81a2_vorto-logo-dark-bg%402x-p-800.png 800w, https://global-uploads.webflow.com/5e8011cbdad44df4a729d050/5e8286bb5ce9c33a73dd81a2_vorto-logo-dark-bg%402x-p-1080.png 1080w, https://global-uploads.webflow.com/5e8011cbdad44df4a729d050/5e8286bb5ce9c33a73dd81a2_vorto-logo-dark-bg%402x.png 1788w" sizes="(max-width: 479px) 59vw, 174.203125px" alt="" class="image">-->
+<app-spinner *ngIf="!todos"></app-spinner>
+
+
+<div *ngIf="todos">
+  <p>
+    <label for="new-task">Add To Do Items</label><input type="text" id="new-task"  placeholder="Please add what's next on your list..." [(ngModel)]="todoTitle" (keyup.enter)="addTodo()">
+  </p>
+  <br>
+  <h3 class ="labelAdjustment">Todo Items Details</h3>
+<div class="todo-item" *ngFor="let todo of todosFiltered()" @fade>
+  <div class="todo-item-left">
+    <input type="checkbox" [(ngModel)]="todo.Completed" (change)="updateStatus(todo)">
+    <div *ngIf="!todo.editing; else editingTodo" class="todo-item-label" [ngClass]="{ 'completed' : todo.Completed }" (dblclick)="editTodo(todo)">{{ todo.Description }}</div>
+    <ng-template #editingTodo>
+      <input type="text" class="todo-item-edit" [(ngModel)]="todo.Description" (blur)="doneEdit(todo)" (keyup.enter)="doneEdit(todo)" (keyup.esc)="cancelEdit(todo)"autofocus>
+    </ng-template>
+  </div>
+  <div class="remove-item">
+  <i class="fa fa-trash-o" style="font-size:24px;color:red" (click)="deleteTodo(todo.Id)"></i>
+  </div>
+
+</div>
+
+<div class="extra-container">
+  <div><label><input type="checkbox" (change)="checkAllTodos()"  [(ngModel)]="!anyRemainingModel"> Check All</label></div>
+  <div>{{ remaining() }} items left</div>
+</div>
+
+<div class="extra-container">
+  <div>
+    <button [ngClass]="{'active': filter === 'all'}" (click)="filter='all'">All</button>
+    <button [ngClass]="{'active': filter === 'active'}" (click)="filter='active'">Active</button>
+    <button [ngClass]="{'active': filter === 'completed'}" (click)="filter='completed'">Completed</button>
+  </div>
+
+<!--  <div *ngIf="atLeastOneCompleted()">-->
+<!--    <button (click)="clearCompleted()">Clear Completed</button>-->
+<!--  </div>-->
+
+</div>
+</div>
