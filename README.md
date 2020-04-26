@@ -13,10 +13,13 @@ Install: Enviroment
 Install: Project dependencies
 3.	Open command line/terminal: navigate to Client folder, type "npm install"
 4.	Open command line/terminal: navigate to server folder, type "go get"
+
 Run it
+
 5.	Client
 o	Open command line/terminal: navigate to frontend folder, type "npm start"
 o	Open browser: http://localhost:4200/
+
 6. Server
 o	Open command line/terminal: navigate to backend folder, type "go run main.go"
 o	Open browser: http://localhost:8000/api/getToDoListItems
@@ -24,7 +27,7 @@ o	Open browser: http://localhost:8000/api/getToDoListItems
 
 Please use git bash or cmdr for better experience.
 
--- Shabih Sharfani
+Author-- Shabih Sharfani
 
 Improvements for future:
 
