@@ -1,7 +1,7 @@
 # TODO-Angular-GO-App
 TODO CRUD Angular( 9 )app with GO Lang Server
 
-![](todo.gif)
+ ![](todoApp.gif)
 
 Install: Enviroment
 1.	Install go: https://golang.org/
