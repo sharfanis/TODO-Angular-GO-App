@@ -3,7 +3,7 @@ TODO CRUD Angular( 9 )app with GO Lang Server
 
  ![](todoApp.gif)
 
-Install: Enviroment
+Install: Environment
 1.	Install go: https://golang.org/
 
 2.	Install node js: https://nodejs.org/
